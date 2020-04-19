@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="stylesheet" href="./styles/index.css" />
+  <link rel="stylesheet" type="text/css" href="./styles/demo.css" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="./styles/slick.css" />
+  <link rel="stylesheet" type="text/css" href="./styles/slick-theme.css" />
+
+
+
+  <title>FEOpeco</title>
+</head>
+
+<body>
+  <!--navbar-->
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: #fff;">
+    <div class="container">
+      <a class="navbar-brand" href=""> <img id="logo" src="./images/logo.png" /></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="form-inline my-2 my-lg-0">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#" onclick="gotoSection('about-us');return false;">About Us <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#" onclick="gotoSection('services');return false;">Services <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#" onclick="gotoSection('projects');return false;">Projects <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#" onclick="gotoSection('contact');return false;">Contact Us <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- start main image-->
+  <div class="container-fluid slideshow no-padding" style="padding: 0px;margin-top: 105px;">
+    <div class="cycle-slideshow" data-cycle-slides=".slides" data-cycle-speed="2000" data-cycle-timeout="6000"
+      data-cycle-loader="wait" data-cycle-pager-template="<a href=#></a>">
+      <div class="slides">
+        <a class="colorbox" href="#" rel="slide1"><img src="./images/<%= bannerImage %>" /></a>
+      </div>
+    </div>
+  </div>
+  <!-- About us-->
+  <div id="about-us" class="about-us">
+    <div class="umb-grid">
+      <div class="grid-section">
+        <div>
+          <div class="container">
+            <div class="row clearfix">
+              <div class="col-md-6 column">
+                <h3><%= aboutUs.title %></h3>
+                <div>
+                  <p style="text-align: justify;">
+                    <%= aboutUs.content %>
+                  </p>
+                </div>
+                <div>
+                  <a type="button" class="btn btn-info portofolio"download="FEOpeco portofolio" href="./images/<%= aboutUs.pdfUrl %>"
+                    style="background-color: #fff; color: #bc2025; font-weight: 600; margin-bottom: 30px;">
+                    Download FEOpeco portfolio
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-md-6 column">
+                <div>
+                  <img style="box-shadow: 10px 10px 10px #000; "
+                    src="images/<%= aboutUs.imageUrl %>" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--services-->
+  <br>
+  <div id="services" class="services">
+    <div class="umb-grid">
+      <div class="grid-section">
+        <div class="container">
+          <h3>Services</h3>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <% var x=0;var classe; %><% for(let service of services){ %>
+            <li class="nav-item">
+              <% if (x===0) {%>  <% classe="nav-link active" %>  <% }else{ %> <% classe="nav-link" %>  <% } %>
+              
+              <a class=" <%= classe %>"  id="<%= service._id %>-tab" data-toggle="tab" href="#<%= service._id %>" role="tab"
+                aria-controls="<%= service._id %>" aria-selected="true"><%= service.title %></a>
+            </li>
+            <% x=x+1 %>
+            <% } %>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <% var x=0;var classe; %> <% for(let service of services){ %>
+              <% if (x===0) {%>  <% classe="tab-pane fade active show" %>  <% }else{ %> <% classe="tab-pane fade" %>  <% } %>
+
+            <div class=" <%= classe %>" id="<%= service._id %>" role="tabpanel" aria-labelledby="<%= service._id %>-tab">
+              <div class="row clearfix">
+                <div class="col-md-4 column">
+                  <div>
+                    <img src="images/<%= service.imageUrl %>" />
+                  </div>
+                </div>
+                <div class="col-md-8 column">
+                  <div>
+                    <p style="text-align: justify;">
+                      <%= service.content %>
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <% x=x+1 %>
+            <% } %>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <!-- projects -->
+  <div id="projects" class="projects">
+    <div class="umb-grid">
+      <div class="grid-section">
+        <div>
+          <div class="container">
+            <h3>Projects</h3>
+            <!-- bootstrap card with row name myCarousel as row 1-->
+            <div class="row">
+              <div class="col-md-12 heroSlider-fixed">
+                <div class="overlay">
+                </div>
+                <!-- Slider -->
+                <div class="slider responsive">
+                  <% for(let project of projects){ %>
+                  <div class="image-container">
+                    <img src="images/<%= project.imageUrl %>" />
+                    <div class="image-caption">
+                      <h1><%= project.title %></h1>
+                      <p><%= project.caption %></p>
+                    </div>
+                  </div>
+                  <% } %>
+               
+                </div>
+              </div>
+              <!-- control arrows -->
+              <div class="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              </div>
+              <div class="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <br>
+  <!-- contact -->
+  <!-- contact -->
+  <div id="contact" class="contact">
+    <div class="container ">
+      <div class="row">
+        <div class="logo col-12 col-sm-6 col-md-4"><a class="navbar-brand" href="">
+            <img src="./images/logo.png" /></a>
+        </div>
+        <div class="address col-12 col-sm-6 col-md-4">
+
+          <address>
+            <strong>Address.</strong><br>
+           <%= contact.address %><br>
+            <abbr title="Phone">Tel:</abbr> <%= contact.phone %><br>
+            <abbr title="Fax">Fax:</abbr> <%= contact.fax %>
+          </address>
+
+          <address>
+            <strong>Email</strong><br>
+            <a href="mailto:#"><%= contact.email %></a>
+          </address>
+
+        </div>
+        <div class="map col-12 col-sm-6 col-md-4">
+          <iframe
+            src="./images/<%= contact.imageUrl %>"
+            width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+            tabindex="0"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <br>
+<footer class="container-fluid no-padding">
+    <div class="container">
+          <div class="row clearfix" style="font-size: 16px;">
+            <div class="col-sm-4 column">
+          Copyright ©2020, FEOPECO
+        </div>
+            <div class="col-sm-4 column" style="text-align:center;">
+          <a href="info@opeco.org">info@feopeco.org</a> | 
+          <a href="www.opeco.org">www.feopeco.org</a>
+        </div>
+            <div class="col-sm-4 column">
+        </div>
+        </div>
+      </div>
+      
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./slick.min.js"></script>
+  <script type="text/javascript" src="./index.js"></script>
+  <script>
+    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("navbar").style.paddingBottom = "5px";
+        document.getElementById("navbar").style.paddingTop = "5px";
+        document.getElementById("logo").style.height = "45px";
+      } else {
+        document.getElementById("navbar").style.paddingBottom = "15px";
+        document.getElementById("navbar").style.paddingTop = "15px";
+        document.getElementById("logo").style.height = "64px";
+      }
+    }
+    function findPos(obj) {
+        var curtop = 0;
+        if (obj.offsetParent) {
+            do {
+                curtop += obj.offsetTop;
+            } while (obj = obj.offsetParent);
+        return [curtop-64];
+        }
+    }
+    function posTop() 
+{
+return typeof window.pageYOffset != 'undefined' ?  window.pageYOffset : document.documentElement && document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ? document.body.scrollTop : 0;
+} 
+    function gotoSection(secID){
+      var ele = document.getElementById(secID);
+      var pos = findPos(ele);
+      console.log(pos,posTop());
+      window.scroll(0,pos);
+      return false;
+    }
+    </script>
+</body>
+
+
+</html>

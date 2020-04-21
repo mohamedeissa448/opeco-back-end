@@ -24,7 +24,7 @@ app.set("view engine", "ejs");
 var mongoose = require("mongoose");
 mongoose //"mongodb://localhost:27017/opeco"
   .connect(
-    "mongodb+srv://admin:admin@cluster0-2ygqr.mongodb.net/test?retryWrites=true&w=majority",
+    "mongodb+srv://admin:admin@cluster0-lnmba.mongodb.net/test?retryWrites=true&w=majority",
     {
       useNewUrlParser: true
     }

@@ -1,11 +1,11 @@
 const express = require("express");
 const Router = express.Router();
-var aboutUsController = require("../controllers/aboutUsController");
+var analyticsController = require("../controllers/analyticsController");
 
 Router.post("/update", (req, res, next) => {
-  aboutUsController.update(req, res);
+  analyticsController.update(req, res);
 });
 Router.get("/get", (req, res, next) => {
-  aboutUsController.get(req, res);
+  analyticsController.get(req, res);
 });
 module.exports = Router;

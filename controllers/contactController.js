@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
     console.log("fieldname", file.fieldname);
   }
 });
-var upload = multer({
+/*var upload = multer({
   //multer settings
   storage: storage,
   fileFilter: function(req, file, callback) {
@@ -26,55 +26,64 @@ var upload = multer({
     }
     callback(null, true);
   }
-}).single("image");
+}).single("image");*/
 module.exports = {
   update: (req, res) => {
-    upload(req, res, function(err) {
-      console.log("boooooodyxx", req.body);
-      if (err) {
-        res.status(422).json({ error_code: 1, err_desc: err });
-        return;
-      }
-      /** Multer gives us file info in req.file object */
-      if (!req.file) {
+    //  upload(req, res, function(err) {
+    console.log("boooooodyxx", req.body);
+    /* if (err) {
+      res.status(422).json({ error_code: 1, err_desc: err });
+      return;
+    }
+    * Multer gives us file info in req.file object */
+    /* if (!req.file) {
         res.json({ error_code: 1, err_desc: "No file passed" });
         return;
       }
       let imageUrl = req.file.filename;
       // Find the document
-      console.log("imageUrl", imageUrl);
-      mainModel
-        .findOne({})
-        .then(document => {
-          if (!document) return res.status(404).send({ msg: "not found" });
+      console.log("imageUrl", imageUrl);*/
+    mainModel
+      .findOne({})
+      .then(document => {
+        if (!document) return res.status(404).send({ msg: "not found" });
 
-          var query = {},
-            options = { new: true, setDefaultsOnInsert: true };
-          mainModel.findOneAndUpdate(
-            query,
-            {
-              $set: {
-                contact: {
-                  address: req.body.address,
-                  phone: req.body.phone,
-                  fax: req.body.fax,
-                  email: req.body.email,
-                  imageUrl: imageUrl
-                }
+        var query = {},
+          options = { new: true, setDefaultsOnInsert: true };
+        mainModel.findOneAndUpdate(
+          query,
+          {
+            $set: {
+              contact: {
+                address: req.body.address,
+                phone: req.body.phone,
+                fax: req.body.fax,
+                email: req.body.email,
+                // imageUrl: imageUrl,
+                mapUrl: req.body.mapUrl
               }
-            },
-            options,
-            (err, result) => {
-              if (err) {
-                return res.status(422).send({ msg: "failed" });
-              }
-              console.log("final result", result);
-              res.send({ msg: "success" });
             }
-          );
-        })
+          },
+          options,
+          (err, result) => {
+            if (err) {
+              return res.status(422).send({ msg: "failed" });
+            }
+            console.log("final result", result);
+            res.send({ msg: "success" });
+          }
+        );
+      })
 
-        .catch(err => res.status(500).send({ err: err }));
+      .catch(err => res.status(500).send({ err: err }));
+    // });
+  },
+  get: (req, res) => {
+    mainModel.findOne({}, (err, document) => {
+      if (err) {
+        return res.status(500).send({ err: err });
+      }
+      return res.send({ contact: document.contact });
     });
   }
 };

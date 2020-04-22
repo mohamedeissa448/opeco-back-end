@@ -20,7 +20,8 @@ const contactSchema = new mongoose.Schema({
     required: true,
     default: ""
   },
-  imageUrl: {
+  mapUrl: {
+    //previous imageUrl
     type: String,
     required: true,
     default: ""
@@ -86,6 +87,10 @@ const mainModelSchema = mongoose.Schema({
   aboutUs: aboutUsSchema,
   services: [servicesSchema],
   projects: [projectsSchema],
-  contact: contactSchema
+  contact: contactSchema,
+  analytics: {
+    type: String,
+    default: ""
+  }
 });
 module.exports = mongoose.model("main-model", mainModelSchema);

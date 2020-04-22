@@ -12,7 +12,8 @@ router.get("/", function(req, res, next) {
         aboutUs: document.aboutUs,
         services: document.services,
         projects: document.projects,
-        contact: document.contact
+        contact: document.contact,
+        analytics: document.analytics
       });
     } else {
       res.send({ msg: "404 not found" });

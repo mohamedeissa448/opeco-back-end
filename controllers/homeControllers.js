@@ -53,5 +53,16 @@ module.exports = {
         res.send({ msg: "success" });
       });
     });
+  },
+
+  getBannerImage: (req, res) => {
+    mainModel.findOne({}, (err, document) => {
+      if (err) {
+        return res.status(500).send({ err: err });
+      } else {
+        console.log(" document.bannerImageUrl", document.bannerImageUrl);
+        res.status(200).send({ bannerImageUrl: document.bannerImageUrl });
+      }
+    });
   }
 };

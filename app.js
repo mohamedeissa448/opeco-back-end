@@ -12,7 +12,7 @@ var AboutUsRouter = require("./routes/aboutUsRouter");
 var ServicesRouter = require("./routes/servicesRouter");
 var projectsRouter = require("./routes/projectsRouter");
 var contactRouter = require("./routes/contactRouter");
-
+var analyticsRouter = require("./routes/analyticsRouter");
 const passport = require("passport");
 const authenticate = require("./authenticate");
 
@@ -47,6 +47,7 @@ app.use("/admin/about-us", authenticate.verifyUser, AboutUsRouter);
 app.use("/admin/services", authenticate.verifyUser, ServicesRouter);
 app.use("/admin/projects", authenticate.verifyUser, projectsRouter);
 app.use("/admin/contact", authenticate.verifyUser, contactRouter);
+app.use("/admin/analytics", authenticate.verifyUser, analyticsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

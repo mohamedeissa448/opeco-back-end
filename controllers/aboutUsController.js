@@ -67,5 +67,15 @@ module.exports = {
         }
       );
     });
+  },
+  get: (req, res) => {
+    mainModel.findOne({}, (err, document) => {
+      if (err) {
+        return res.status(500).send({ err: err });
+      } else {
+        console.log(" document.aboutUs", document.aboutUs);
+        res.status(200).send({ aboutUs: document.aboutUs });
+      }
+    });
   }
 };

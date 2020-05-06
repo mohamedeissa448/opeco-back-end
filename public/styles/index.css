@@ -44,11 +44,11 @@ nav.navbar {
   margin-bottom: 0;
   border-bottom: none;
   position: fixed;
-    top: 0;
-    width: 100%;
-    overflow: hidden;
-    z-index: 1;
-    border-bottom: 5px solid #bc2025;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  border-bottom: 5px solid #bc2025;
 }
 nav.navbar ul {
   font-size: 20px;
@@ -59,7 +59,7 @@ nav.navbar ul {
 }
 .collapse a:hover {
   background-color: #15315a;
-  color:  #fff !important;;
+  color: #fff !important;
 }
 .collapse a:after {
   content: "";
@@ -134,16 +134,23 @@ header h1 {
   opacity: 1;
 }
 /* About*/
-.about-us, .projects {
+.about-us,
+.projects {
   background-color: #15315a;
 }
-.about-us p, .about-us h3, .projects p, .projects h3 {
+.about-us p,
+.about-us h3,
+.projects p,
+.projects h3 {
   color: #fff;
 }
-.services h3,.services p{
+.services h3,
+.services p {
   color: #15315a;
 }
- .about-us h3,  .projects h3,.services h3 {
+.about-us h3,
+.projects h3,
+.services h3 {
   font-weight: 900;
 }
 .page-content .grid-section > div {
@@ -224,15 +231,15 @@ header h1 {
   height: 15px !important;
   border-radius: 50%;
 }
-.slick-dots li button:before{
+.slick-dots li button:before {
   line-height: 15px !important;
   width: 16px !important;
   height: 15px !important;
   color: #fff !important;
   opacity: 1 !important;
 }
-.slick-dots li.slick-active button:before{
-  color: #15315a !important
+.slick-dots li.slick-active button:before {
+  color: #15315a !important;
 }
 .slick-dots li :hover {
   /* background-color: #15315a; */
@@ -379,20 +386,24 @@ h1 {
 }
 
 /**********/
-p{
-  text-indent:40px; 
+p {
+  text-indent: 40px;
   padding: 20px;
 }
-footer, footer a{
+footer,
+footer a {
   color: #15315a;
   text-decoration: none;
   font-size: 16px;
   margin-bottom: 10px;
 }
-footer{
+footer {
   border-top: 5px solid #bc2025;
   padding: 15px !important;
 }
 html {
   scroll-behavior: smooth;
+}
+pre {
+  display: none !important;
 }

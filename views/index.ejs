@@ -16,8 +16,9 @@
   <link rel="stylesheet" type="text/css" href="./styles/slick-theme.css" />
 
 
-
   <title>FEOpeco</title>
+  <%= analytics  %>
+
 </head>
 
 <body>
@@ -215,11 +216,8 @@
           </address>
 
         </div>
-        <div class="map col-12 col-sm-6 col-md-4">
-          <iframe
-            src="./images/<%= contact.mapUrl %>"
-            width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-            tabindex="0"></iframe>
+        <div class="map col-12 col-sm-6 col-md-4" id="map">
+          
         </div>
       </div>
 
@@ -261,6 +259,20 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="./slick.min.js"></script>
   <script type="text/javascript" src="./index.js"></script>
+  <script>
+    // Initialize and add the map
+    function initMap() {
+      // The location of Uluru
+      var uluru = {lat: -25.344, lng: 131.036};
+      // The map, centered at Uluru
+      var map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 4, center: uluru});
+      // The marker, positioned at Uluru
+      var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+        </script>
+    
+  <script src="<%= contact.mapUrl %>"></script>
   <script>
     // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
     window.onscroll = function() {scrollFunction()};
